@@ -1,5 +1,8 @@
 # AppLocker
 
+![PyPI](https://img.shields.io/pypi/v/applocker)
+![GitHub](https://img.shields.io/github/license/LiamSennitt/applocker)
+
 The `applocker` module allows you to easily parse and create AppLocker Policy XML files and/or strings in Python.
 
 ## Installation
