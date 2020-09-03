@@ -23,16 +23,12 @@ The function `applocker.load`, loads an AppLocker Policy XML file.
 ```python
 >>> with open('example.xml', 'r') as file:
 ...     applocker.load(file)
-
-AppLockerPolicy(version='1', rule_collections=[])
 ```
 
 The function `applocker.loads`, loads an AppLocker Policy XML string.
 
 ```python
 >>> applocker.loads('<AppLockerPolicy Version="1" />')
-
-AppLockerPolicy(version='1', rule_collections=[])
 ```
 
 In addition to loading an existing AppLocker Policy, policies created using the relevant Conditions, Rules and Rule Collections can be dumped to an XML file using the `applocker.dump` function.
@@ -46,8 +42,6 @@ Or, an XML string using the `applocker.dumps` function.
 
 ```python
 >>> applocker.dumps(policy)
-
-<AppLockerPolicy Version="1" />
 ```
 
 ### FilePublisherRule
