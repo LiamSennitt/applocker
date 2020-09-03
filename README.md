@@ -10,7 +10,7 @@ The `applocker` module allows you to easily parse and create AppLocker Policy XM
 To install the `applocker` module via pip, run the command:
 
 ```console
-pip install applocker
+$ pip install applocker
 ```
 
 ## Usage
