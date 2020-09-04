@@ -18,7 +18,7 @@ class AppLockerPolicy(Element):
 
     @property
     def rule_collections(self):
-        self.findall('RuleCollection')
+        return self.findall('RuleCollection')
 
     @rule_collections.setter
     def rule_collections(self, rule_collections):
