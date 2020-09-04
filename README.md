@@ -1,5 +1,6 @@
 # AppLocker
 
+[![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/LiamSennitt/applocker/build/main)](https://github.com/LiamSennitt/applocker/actions?query=workflow%3Abuild+branch%3Amain)
 [![PyPI](https://img.shields.io/pypi/v/applocker)](https://pypi.org/project/applocker/)
 [![GitHub](https://img.shields.io/github/license/LiamSennitt/applocker)](LICENSE)
 
