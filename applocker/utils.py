@@ -1,7 +1,7 @@
-from sys import modules
+import sys
+
 from xml.etree.ElementTree import tostring, fromstring
-from applocker.conditions import (FilePublisherCondition, FilePathCondition,
-                                  FileHashCondition)
+from applocker.conditions import FilePublisherCondition, FilePathCondition, FileHashCondition
 from applocker.rules import FilePublisherRule, FilePathRule, FileHashRule
 from applocker.policy import AppLockerPolicy
 
@@ -20,4 +20,4 @@ def load(stream):
 
 def loads(string):
     element = fromstring(string)
-    return getattr(modules[__name__], element.tag).from_element(element)
+    return getattr(sys.modules[__name__], element.tag).from_element(element)

@@ -13,7 +13,10 @@ class BinaryVersionRange(Element):
 
     @low_section.setter
     def low_section(self, low_section):
-        self.set('LowSection', low_section)
+        if isinstance(low_section, str):
+            self.set('LowSection', low_section)
+        else:
+            raise TypeError(f'invalid type for low_section: {type(low_section)}')
 
     @property
     def high_section(self):
@@ -21,7 +24,10 @@ class BinaryVersionRange(Element):
 
     @high_section.setter
     def high_section(self, high_section):
-        self.set('HighSection', high_section)
+        if isinstance(high_section, str):
+            self.set('HighSection', high_section)
+        else:
+            raise TypeError(f'invalid type for high_section: {type(high_section)}')
 
     @classmethod
     def from_element(cls, element):
@@ -32,8 +38,7 @@ class BinaryVersionRange(Element):
 
 
 class FilePublisherCondition(Element):
-    def __init__(self, *, publisher_name='*', product_name='*',
-                 binary_name='*', binary_version_range=BinaryVersionRange()):
+    def __init__(self, *, publisher_name='*', product_name='*', binary_name='*', binary_version_range=BinaryVersionRange()):
         super(FilePublisherCondition, self).__init__('FilePublisherCondition')
         self.publisher_name = publisher_name
         self.product_name = product_name
@@ -46,7 +51,10 @@ class FilePublisherCondition(Element):
 
     @publisher_name.setter
     def publisher_name(self, publisher_name):
-        self.set('PublisherName', publisher_name)
+        if isinstance(publisher_name, str):
+            self.set('PublisherName', publisher_name)
+        else:
+            raise TypeError(f'invalid type for publisher_name: {type(publisher_name)}')
 
     @property
     def product_name(self):
@@ -54,7 +62,10 @@ class FilePublisherCondition(Element):
 
     @product_name.setter
     def product_name(self, product_name):
-        self.set('ProductName', product_name)
+        if isinstance(product_name, str):
+            self.set('ProductName', product_name)
+        else:
+            raise TypeError(f'invalid type for product_name: {type(product_name)}')
 
     @property
     def binary_name(self):
@@ -62,7 +73,10 @@ class FilePublisherCondition(Element):
 
     @binary_name.setter
     def binary_name(self, binary_name):
-        self.set('BinaryName', binary_name)
+        if isinstance(binary_name, str):
+            self.set('BinaryName', binary_name)
+        else:
+            raise TypeError(f'invalid type for binary_name: {type(binary_name)}')
 
     @property
     def binary_version_range(self):
@@ -74,6 +88,8 @@ class FilePublisherCondition(Element):
             self.append(binary_version_range)
         elif isinstance(binary_version_range, Element):
             self.append(BinaryVersionRange.from_element(binary_version_range))
+        else:
+            raise TypeError(f'invalid type for binary_version_range: {type(binary_version_range)}')
 
     @classmethod
     def from_element(cls, element):
@@ -96,7 +112,10 @@ class FilePathCondition(Element):
 
     @path.setter
     def path(self, path):
-        self.set('Path', path)
+        if isinstance(path, str):
+            self.set('Path', path)
+        else:
+            raise TypeError(f'invalid type for path: {type(path)}')
 
     @classmethod
     def from_element(cls, element):
@@ -117,7 +136,10 @@ class FileHash(Element):
 
     @type.setter
     def type(self, type):
-        self.set('Type', type)
+        if isinstance(type, str):
+            self.set('Type', type)
+        else:
+            raise TypeError(f'invalid type for type: {type(type)}')
 
     @property
     def data(self):
@@ -125,7 +147,10 @@ class FileHash(Element):
 
     @data.setter
     def data(self, data):
-        self.set('Data', data)
+        if isinstance(data, str):
+            self.set('Data', data)
+        else:
+            raise TypeError(f'invalid type for data: {type(data)}')
 
     @property
     def source_file_name(self):
@@ -133,7 +158,10 @@ class FileHash(Element):
 
     @source_file_name.setter
     def source_file_name(self, source_file_name):
-        self.set('SourceFileName', source_file_name)
+        if isinstance(source_file_name, str):
+            self.set('SourceFileName', source_file_name)
+        else:
+            raise TypeError(f'invalid type for source_file_name: {type(source_file_name)}')
 
     @property
     def source_file_length(self):
@@ -141,7 +169,10 @@ class FileHash(Element):
 
     @source_file_length.setter
     def source_file_length(self, source_file_length):
-        self.set('SourceFileLength', source_file_length)
+        if isinstance(source_file_length, str):
+            self.set('SourceFileLength', source_file_length)
+        else:
+            raise TypeError(f'invalid type for source_file_length: {type(source_file_length)}')
 
     @classmethod
     def from_element(cls, element):
@@ -164,11 +195,16 @@ class FileHashCondition(Element):
 
     @file_hashes.setter
     def file_hashes(self, file_hashes):
-        for file_hash in file_hashes:
-            if isinstance(file_hash, FileHash):
-                self.append(file_hash)
-            elif isinstance(file_hash, Element):
-                self.append(FileHash.from_element(file_hash))
+        if isinstance(file_hashes, list):
+            for file_hash in file_hashes:
+                if isinstance(file_hash, FileHash):
+                    self.append(file_hash)
+                elif isinstance(file_hash, Element):
+                    self.append(FileHash.from_element(file_hash))
+                else:
+                    raise TypeError(f'invalid type for file_hashes element: {type(file_hash)}')
+        else:
+            raise TypeError(f'invalid type for file_hashes: {type(file_hashes)}')
 
     @classmethod
     def from_element(cls, element):
