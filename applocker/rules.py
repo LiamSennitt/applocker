@@ -105,7 +105,7 @@ class _Rule(Element):
             description=element.get('Description'),
             user_or_group_sid=element.get('UserOrGroupSid'),
             action=element.get('Action'),
-            conditions=element.find('Conditions')
+            conditions=list(element.find('Conditions'))
         )
 
 
