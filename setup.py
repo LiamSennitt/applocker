@@ -7,7 +7,7 @@ with open('README.md', 'r') as file:
 
 setup(
     name='applocker',
-    version='1.1.0',
+    version='1.1.1',
     author='Liam Sennitt',
     description='AppLocker Policy parser and emitter for Python',
     long_description=long_description,
